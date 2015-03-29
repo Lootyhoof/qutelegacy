@@ -1,0 +1,7 @@
+skin	browser		qutelegacy	chrome/browser/
+skin	communicator	qutelegacy	chrome/communicator/
+skin	global		qutelegacy	chrome/global/
+skin	mozapps		qutelegacy	chrome/mozapps/
+
+skin	os			qutelegacy	chrome/os/winnt/		os=WINNT	
+skin	os			qutelegacy	chrome/os/linux/		os=Linux
