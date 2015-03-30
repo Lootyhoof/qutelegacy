@@ -9,10 +9,6 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
 
-#main-window:after {
-  top: -16px !important;
-}
-
 /* Make titlebar text light/dark depending on persona */
 #main-window:-moz-lwtheme-brighttext:after{
     color: white !important;
