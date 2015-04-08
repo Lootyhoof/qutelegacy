@@ -10,11 +10,21 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 
 /* Make titlebar text light/dark depending on persona */
-#main-window:-moz-lwtheme-brighttext:after{
+@media all and (-moz-windows-theme: aero), (-moz-windows-glass), all and (-moz-windows-compositor) {
+#main-window[sizemode="normal"]:-moz-lwtheme-brighttext:after{
     color: white !important;
 	text-shadow: none !important;
 }
-#main-window:-moz-lwtheme-darktext:after{
+#main-window[sizemode="normal"]:-moz-lwtheme-darktext:after{
+     color: black !important;
+}
+}
+
+#main-window[sizemode="maximized"]:-moz-lwtheme-brighttext:after{
+    color: white !important;
+	text-shadow: none !important;
+}
+#main-window[sizemode="maximized"]:-moz-lwtheme-darktext:after{
      color: black !important;
 }
 
