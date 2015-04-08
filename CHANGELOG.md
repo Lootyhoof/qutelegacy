@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.0.2
+- titlebar fix
+
 ### 1.0.1
 - fix titlebar spacing
 
