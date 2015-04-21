@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.3
+- improve titlebar text colour in personas
+- fix bookmark highlights in personas
+
 ### 1.0.2
 - titlebar fix
 
