@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.1.1
+- fix vertical toolbar borders
+- remove double padlocks
+
 ### 1.1.0
 - Pale Moon v26 compatibility
 - fix window borders on Windows 10
