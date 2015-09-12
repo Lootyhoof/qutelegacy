@@ -21,6 +21,7 @@
   background-color: -moz-Dialog;
 }
 
+@media (-moz-windows-classic) {
   #main-window[tabsintitlebar]:not([inFullscreen]) #toolbar-menubar[inactive] ~ #TabsToolbar:not(:-moz-lwtheme) {
     background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px),
                 linear-gradient(rgba(50%,50%,50%,0), ActiveCaption 85%);
@@ -31,6 +32,7 @@
                 linear-gradient(rgba(50%,50%,50%,0), InactiveCaption 85%);
     color: InactiveCaptionText;
   }
+}
 
   #main-window[tabsintitlebar] #titlebar:-moz-lwtheme {
     visibility: hidden;
