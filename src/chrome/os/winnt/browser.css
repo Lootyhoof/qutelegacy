@@ -233,7 +233,7 @@
         /* Draw XUL caption buttons and background on Win10 */
         @media (-moz-windows-default-theme) {
           #main-window {
-            background-color: hsl(0, 0%, 90%);
+            background-color: -moz-dialog;
           }
         }
 		
@@ -522,11 +522,11 @@
       border: 1px solid rgba(10%,10%,10%,.4);
       border-top-style: none;
     }
-  }
-  /* Top inner border */
-  #main-window:not([tabsintitlebar]):not([inFullscreen]) #navigator-toolbox:not(:-moz-lwtheme) {
-    border-top: 1px solid rgba(10%,10%,10%,.4);
-    -moz-border-top-colors: none;
+	/* Top inner border */
+    #main-window:not([tabsintitlebar]):not([inFullscreen]) #navigator-toolbox:not(:-moz-lwtheme) {
+      border-top: 1px solid rgba(10%,10%,10%,.4);
+      -moz-border-top-colors: none;
+    }
   }
 
   /* Make the window draggable by glassed toolbars (bug 555081) */
