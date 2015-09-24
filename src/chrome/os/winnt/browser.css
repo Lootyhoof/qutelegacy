@@ -213,7 +213,6 @@
 }
 
 /* Aero+glass specific */
-@media all and (-moz-windows-compositor) {
 @media (-moz-windows-compositor) {
   #main-window {
     -moz-appearance: -moz-win-glass;
