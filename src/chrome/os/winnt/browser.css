@@ -60,6 +60,10 @@
   background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, rgba(0,0,0,.05) 1px, transparent 50%);
 }
 
+#main-window[tabsintitlebar] #TabsToolbar {
+  background-color: transparent;
+}
+
 @media all and (-moz-windows-default-theme) {
   #main-window[sizemode=normal] #TabsToolbar {
     padding-left: 2px;
