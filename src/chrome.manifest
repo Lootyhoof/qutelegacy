@@ -5,3 +5,6 @@ skin	mozapps		qutelegacy	chrome/mozapps/
 
 skin	os			qutelegacy	chrome/os/winnt/		os=WINNT	
 skin	os			qutelegacy	chrome/os/linux/		os=Linux
+
+skin	appver		qutelegacy	chrome/appver/26/		appversion<27.0.0b1
+skin	appver		qutelegacy	chrome/appver/27/		appversion>=27.0.0b1
