@@ -9,12 +9,13 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>{8a13d488-8657-4dab-b98e-98e62085837f}</em:id>
-    <em:version>1.3.0</em:version>
+    <em:version>1.4.0</em:version>
     <em:name>Qute Legacy</em:name>
     <em:description>Customized version of Arvid Axelsson's great theme. Fork of "Qute 3++" by Murphy.</em:description>
     <em:creator>Lootyhoof</em:creator>
     <em:type>4</em:type>
     <em:internalName>qutelegacy</em:internalName>
+    <em:skinnable>true</em:skinnable>
 
     <em:contributor>David Quintana</em:contributor>
     <em:contributor>Arvid Axelsson - author of the Qute icons and the original theme</em:contributor>
