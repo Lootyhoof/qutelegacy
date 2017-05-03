@@ -5,3 +5,4 @@ skin	mozapps		qutelegacy	chrome/mozapps/
 
 skin	os			qutelegacy	chrome/os/winnt/		os=WINNT	
 skin	os			qutelegacy	chrome/os/linux/		os=Linux
+skin	os			qutelegacy	chrome/os/darwin/		os=Darwin
