@@ -60,15 +60,8 @@ panel[type="arrow"][side="right"] {
   background: var(--panel-arrowcontent-background);
   background-clip: padding-box;
   border: var(--panel-arrowcontent-border);
-  margin: 4px;
-}
-
-@media (-moz-os-version: windows-vista),
-       (-moz-os-version: windows-win7) {
-/* < Win8 */
-.panel-arrowcontent {
   border-radius: 4px;
-}
+  margin: 4px;
 }
 
 .panel-arrow[side="top"],
