@@ -445,7 +445,7 @@ menuitem.bookmark-item {
 /* ::::: primary toolbar buttons ::::: */
 
 .toolbarbutton-1 {
-  list-style-image: url("chrome://browser/skin/Toolbar.png");
+  list-style-image: url("chrome://browser/skin/Toolbar-large.png");
 }
 
 .toolbarbutton-1:not([type="menu-button"]) {
@@ -914,7 +914,7 @@ toolbar[brighttext] #tabview-button {
 }
 
 #bookmarks-menu-button.bookmark-item {
-  list-style-image: url("chrome://browser/skin/Toolbar.png") !important;
+  list-style-image: url("chrome://browser/skin/Toolbar-large.png") !important;
 }
 
 #bookmarks-menu-button.toolbarbutton-1 {
