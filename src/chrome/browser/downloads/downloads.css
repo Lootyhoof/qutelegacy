@@ -269,7 +269,7 @@ toolbar[iconsize="small"] > #downloads-indicator > #downloads-indicator-anchor >
 }
 
 toolbar[iconsize="large"] > #downloads-indicator > #downloads-indicator-anchor > #downloads-indicator-icon {
-  background: -moz-image-rect(url("chrome://browser/skin/Toolbar.png"),
+  background: -moz-image-rect(url("chrome://browser/skin/Toolbar-large.png"),
                                 0, 144, 24, 120) center no-repeat;
 }
 
