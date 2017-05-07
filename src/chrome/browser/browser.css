@@ -2283,11 +2283,14 @@ richlistitem[type~="action"][actiontype="switchtab"] > .ac-url-box > .ac-action-
 /* Tab close button */
 .tab-close-button {
   -moz-appearance: none;
-  -moz-image-region: rect(0, 64px, 16px, 48px);
   -moz-margin-end: 2px;
   border: none;
   padding: 0px;
-  list-style-image: url("chrome://global/skin/icons/tab-close.png");
+  list-style-image: url("chrome://global/skin/icons/tab-close.png") !important;
+}
+
+.tab-close-button:not([selected="true"]) {
+  -moz-image-region: rect(0, 64px, 16px, 48px);
 }
 
 .tab-close-button:hover,
