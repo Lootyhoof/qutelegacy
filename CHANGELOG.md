@@ -1,5 +1,20 @@
 # Changelog
 
+### 2.0.0
+- merge in macOS styling (basic macOS support)
+- add image document favicon for viewing standalone images
+- add about:home styling for Home Styler
+- make the security popup padlock icon more theme-native
+- make the unified reload-stop-go controls more theme-native
+- remove redundant Social API components
+- sync notification popup styling with default
+- sync permissions manager styling with default
+- sync devtools styling with default
+- allow extensions to style their own toolbarbutton-badge
+- fix tab close icon mapping
+- provide smaller toolbar image for extension compatibility
+- improve appmenu appearance on Linux
+
 ### 1.5.0
 - support PM27's devtools
 - drop PM26 support
