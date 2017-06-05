@@ -1,5 +1,8 @@
 # Changelog
 
+### 2.0.1
+- sync about:support styling with default
+
 ### 2.0.0
 - merge in macOS styling (basic macOS support)
 - add image document favicon for viewing standalone images
