@@ -1,6 +1,32 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
 
+:root {
+  --tab-background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2)), linear-gradient(-moz-dialog, -moz-dialog);
+  --tab-background-hover: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(hsla(0,0%,100%,.3) 1px, hsla(0,0%,75%,.2) 80%, hsla(0,0%,60%,.2)), linear-gradient(-moz-dialog, -moz-dialog);
+  --tab-pinned-background: radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  --tab-pinned-background-hover: linear-gradient(hsla(0,0%,100%,.4), hsla(0,0%,75%,.4) 80%), radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  --tab-selected-background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%), linear-gradient(-moz-dialog, -moz-dialog);
+  
+  --tab-bar-background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, rgba(0,0,0,.05) 1px, transparent 50%);
+  --toolbar-highlight-top: rgba(255,255,255,.5);
+  --toolbar-highlight-bottom: transparent;
+}
+
+:root:-moz-lwtheme {
+  --tab-selected-background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%);
+}
+
+:root:-moz-lwtheme-brighttext {
+  --tab-background: linear-gradient(hsla(0,0%,40%,.6), hsla(0,0%,30%,.6) 80%);
+  --tab-background-hover: linear-gradient(hsla(0,0%,60%,.6), hsla(0,0%,45%,.6) 80%);
+}
+
+:root:-moz-lwtheme-darktext {
+  --tab-background: linear-gradient(hsla(0,0%,60%,.5), hsla(0,0%,45%,.5) 80%);
+  --tab-background-hover: linear-gradient(hsla(0,0%,80%,.5), hsla(0,0%,60%,.5) 80%);
+}
+
 /* navigator-toolbox */
 
 #navigator-toolbox::after {
@@ -45,7 +71,191 @@
 #navigator-toolbox[tabsontop="true"] > #nav-bar,
 #navigator-toolbox[tabsontop="true"]:not([customizing]) > #nav-bar[collapsed="true"] + toolbar,
 #navigator-toolbox[tabsontop="true"]:not([customizing]) > #nav-bar[collapsed="true"] + #customToolbars + #PersonalToolbar {
-  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: linear-gradient(var(--toolbar-highlight-top), var(--toolbar-highlight-bottom));
+}
+
+/* ::::: app menu button ::::: */
+
+#appmenu-button {
+  border-radius: 0 0 var(--appmenu-border-radius) var(--appmenu-border-radius);
+  border-top: none;
+  padding: 0 1.5em .05em;
+  margin: 0 0 2px;
+}
+
+@media all and (-moz-windows-classic) {
+  #appmenu-button {
+    margin-bottom: 1px;
+  }
+}
+
+@media all and (-moz-windows-default-theme) {
+  #main-window[sizemode="normal"] #appmenu-button {
+    margin-bottom: 5px;
+  }
+}
+
+@media (-moz-windows-default-theme) {
+  #appmenu-popup {
+    -moz-appearance: none;
+    background: white;
+    border: 1px solid ThreeDShadow;
+  }
+  #appmenuPrimaryPane {
+    background-color: rgba(255,255,255,0.5);
+    padding: 2px;
+    -moz-border-end: none;
+  }
+  #appmenuSecondaryPane {
+    background-color: #f1f5fb;
+    box-shadow: 1px 0 2px rgb(204,214,234) inset;
+    -moz-padding-start: 3px;
+    -moz-padding-end: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-family: "Segoe UI Semibold", "Segoe UI", sans-serif;
+  }
+  #appmenuSecondaryPane:-moz-locale-dir(rtl) {
+    box-shadow: -1px 0 2px rgb(204,214,234) inset;
+  }
+
+  #appmenuPrimaryPane menupopup {
+    -moz-appearance: none;
+    background-image: linear-gradient(to right, white 26px, ThreeDLightShadow 26px,
+                                      ThreeDLightShadow 27px, ThreeDHighlight 27px,
+                                      ThreeDHighlight 28px, white 28px);
+    border: 3px solid;
+    -moz-border-top-colors: ThreeDShadow white;
+    -moz-border-bottom-colors: ThreeDShadow white;
+    -moz-border-left-colors: ThreeDShadow white;
+    -moz-border-right-colors: ThreeDShadow white;
+  }
+
+  #appmenuSecondaryPane menupopup {
+    -moz-appearance: none;
+    background-image: linear-gradient(to right, #f1f5fb 26px, ThreeDLightShadow 26px,
+                                      ThreeDLightShadow 27px, ThreeDHighlight 27px,
+                                      ThreeDHighlight 28px, #f1f5fb 28px);
+    border: 3px solid;
+    -moz-border-top-colors: ThreeDShadow #f1f5fb;
+    -moz-border-bottom-colors: ThreeDShadow #f1f5fb;
+    -moz-border-left-colors: ThreeDShadow #f1f5fb;
+    -moz-border-right-colors: ThreeDShadow #f1f5fb;
+  }
+
+  #appmenuPrimaryPane menupopup:-moz-locale-dir(rtl) {
+    background-image: linear-gradient(to left, white 26px, ThreeDLightShadow 26px,
+                                      ThreeDLightShadow 27px, ThreeDHighlight 27px,
+                                      ThreeDHighlight 28px, white 28px);
+  }
+  #appmenuSecondaryPane menupopup:-moz-locale-dir(rtl) {
+    background-image: linear-gradient(to left, #f1f5fb 26px, ThreeDLightShadow 26px,
+                                      ThreeDLightShadow 27px, ThreeDHighlight 27px,
+                                      ThreeDHighlight 28px, #f1f5fb 28px);
+  }
+
+  /* Hi-DPI overrides of the menu backgrounds, to adjust where the gutter line falls */
+  @media (min-resolution: 1.25dppx) {
+    #appmenuPrimaryPane menupopup {
+      background-image: linear-gradient(to right, white 22.4px, ThreeDLightShadow 22.4px,
+                                        ThreeDLightShadow 23.2px, ThreeDHighlight 23.2px,
+                                        ThreeDHighlight 24px, white 24px);
+    }
+    #appmenuSecondaryPane menupopup {
+      background-image: linear-gradient(to right, #f1f5fb 22.4px, ThreeDLightShadow 22.4px,
+                                        ThreeDLightShadow 23.2px, ThreeDHighlight 23.2px,
+                                        ThreeDHighlight 24px, #f1f5fb 24px);
+    }
+    #appmenuPrimaryPane menupopup:-moz-locale-dir(rtl) {
+      background-image: linear-gradient(to left, white 22.4px, ThreeDLightShadow 22.4px,
+                                        ThreeDLightShadow 23.2px, ThreeDHighlight 23.2px,
+                                        ThreeDHighlight 24px, white 24px);
+    }
+    #appmenuSecondaryPane menupopup:-moz-locale-dir(rtl) {
+      background-image: linear-gradient(to left, #f1f5fb 22.4px, ThreeDLightShadow 22.4px,
+                                        ThreeDLightShadow 23.2px, ThreeDHighlight 23.2px,
+                                        ThreeDHighlight 24px, #f1f5fb 24px);
+    }
+  }
+
+  @media (min-resolution: 1.5dppx) {
+    #appmenuPrimaryPane menupopup {
+      background-image: linear-gradient(to right, white 20.6667px, ThreeDLightShadow 20.6667px,
+                                        ThreeDLightShadow 21.3333px, ThreeDHighlight 21.3333px,
+                                        ThreeDHighlight 22px, white 22px);
+    }
+    #appmenuSecondaryPane menupopup {
+      background-image: linear-gradient(to right, #f1f5fb 20.6667px, ThreeDLightShadow 20.6667px,
+                                        ThreeDLightShadow 21.3333px, ThreeDHighlight 21.3333px,
+                                        ThreeDHighlight 22px, #f1f5fb 22px);
+    }
+    #appmenuPrimaryPane menupopup:-moz-locale-dir(rtl) {
+      background-image: linear-gradient(to left, white 20.6667px, ThreeDLightShadow 20.6667px,
+                                        ThreeDLightShadow 21.3333px, ThreeDHighlight 21.3333px,
+                                        ThreeDHighlight 22px, white 22px);
+    }
+    #appmenuSecondaryPane menupopup:-moz-locale-dir(rtl) {
+      background-image: linear-gradient(to left, #f1f5fb 20.6667px, ThreeDLightShadow 20.6667px,
+                                        ThreeDLightShadow 21.3333px, ThreeDHighlight 21.3333px,
+                                        ThreeDHighlight 22px, #f1f5fb 22px);
+    }
+  }
+
+  @media (min-resolution: 2dppx) {
+    #appmenuPrimaryPane menupopup {
+      background-image: linear-gradient(to right, white 19.5px, ThreeDLightShadow 19.5px,
+                                        ThreeDLightShadow 20px, ThreeDHighlight 20px,
+                                        ThreeDHighlight 20.5px, white 20.5px);
+    }
+    #appmenuSecondaryPane menupopup {
+      background-image: linear-gradient(to right, #f1f5fb 19.5px, ThreeDLightShadow 19.5px,
+                                        ThreeDLightShadow 20px, ThreeDHighlight 20px,
+                                        ThreeDHighlight 20.5px, #f1f5fb 20.5px);
+    }
+    #appmenuPrimaryPane menupopup:-moz-locale-dir(rtl) {
+      background-image: linear-gradient(to left, white 19.5px, ThreeDLightShadow 19.5px,
+                                        ThreeDLightShadow 20px, ThreeDHighlight 20px,
+                                        ThreeDHighlight 20.5px, white 20.5px);
+    }
+    #appmenuSecondaryPane menupopup:-moz-locale-dir(rtl) {
+      background-image: linear-gradient(to left, #f1f5fb 19.5px, ThreeDLightShadow 19.5px,
+                                        ThreeDLightShadow 20px, ThreeDHighlight 20px,
+                                        ThreeDHighlight 20.5px, #f1f5fb 20.5px);
+    }
+  }
+
+  .appmenu-menuseparator {
+    -moz-appearance: none;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -moz-margin-start: 30px;
+    padding: 0;
+    border-top: 1px solid #d6e5f5;
+    border-bottom: none;
+  }
+
+  @media (min-resolution: 1.25dppx) {
+    .appmenu-menuseparator {
+      -moz-margin-start: 25px;
+    }
+  }
+  @media (min-resolution: 1.5dppx) {
+    .appmenu-menuseparator {
+      -moz-margin-start: 24px;
+    }
+  }
+  @media (min-resolution: 2dppx) {
+    .appmenu-menuseparator {
+      -moz-margin-start: 22px;
+    }
+  }
+
+  .appmenu-edit-button:not([disabled]):hover {
+    border: 1px solid #b8d6fb;
+    box-shadow: inset 0 0 1px white;
+    background: linear-gradient(#fafbfd, #ebf3fd);
+    transition: .2s ease-in;
+  }
 }
 
 /* bookmark buttons */
@@ -87,7 +297,7 @@ toolbarbutton.bookmark-item[open="true"] {
 
 #TabsToolbar:not(:-moz-lwtheme),
 #TabsToolbar[tabsontop=false] {
-  background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, rgba(0,0,0,.05) 1px, transparent 50%);
+  background-image: var(--tab-bar-background);
 }
 
 @media all and (-moz-windows-default-theme) {
@@ -102,8 +312,7 @@ toolbarbutton.bookmark-item[open="true"] {
 .tabbrowser-tab,
 .tabs-newtab-button {
   -moz-appearance: none;
-  background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2)),
-              linear-gradient(-moz-dialog, -moz-dialog);
+  background: var(--tab-background);
   background-origin: border-box;
   background-position: 1px 2px;
   background-size: -moz-calc(100% - 2px) -moz-calc(100% - 2px);
@@ -118,69 +327,26 @@ toolbarbutton.bookmark-item[open="true"] {
 
 .tabbrowser-tab:hover,
 .tabs-newtab-button:hover {
-  background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(hsla(0,0%,100%,.3) 1px, hsla(0,0%,75%,.2) 80%, hsla(0,0%,60%,.2)),
-                    linear-gradient(-moz-dialog, -moz-dialog);
-}
-
-@media (-moz-windows-theme: luna-blue) {
-  .tabbrowser-tab,
-  .tabs-newtab-button {
-    background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px),
-                      linear-gradient(hsla(51,34%,89%,.9), hsla(51,15%,79%,.9) 1px, hsla(51,9%,68%,.9));
-  }
-
-  .tabbrowser-tab:hover,
-  .tabs-newtab-button:hover {
-    background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px),
-                      linear-gradient(hsla(51,34%,100%,.9), hsla(51,15%,94%,.9) 1px, hsla(51,9%,83%,.9));
-  }
+  background-image: var(--tab-background-hover);
 }
 
 .tabbrowser-tab[selected="true"] {
-  background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%),
-                    linear-gradient(-moz-dialog, -moz-dialog);
+  background-image: var(--tab-selected-background);
 }
 
 #main-window[tabsontop=false]:not([disablechrome]) .tabbrowser-tab[selected=true]:not(:-moz-lwtheme) {
-  background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px),
-                    linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%),
-                    linear-gradient(-moz-dialog, -moz-dialog);
+  --tab-selected-background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%), linear-gradient(-moz-dialog, -moz-dialog);
 }
 
 .tabbrowser-tab:-moz-lwtheme {
   color: inherit;
 }
 
-.tabbrowser-tab[selected="true"]:-moz-lwtheme {
-  background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-brighttext:not([selected="true"]),
-.tabs-newtab-button:-moz-lwtheme-brighttext {
-  background-image: linear-gradient(hsla(0,0%,40%,.6), hsla(0,0%,30%,.6) 80%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-brighttext:not([selected="true"]):hover,
-.tabs-newtab-button:-moz-lwtheme-brighttext:hover {
-  background-image: linear-gradient(hsla(0,0%,60%,.6), hsla(0,0%,45%,.6) 80%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-darktext:not([selected="true"]),
-.tabs-newtab-button:-moz-lwtheme-darktext {
-  background-image: linear-gradient(hsla(0,0%,60%,.5), hsla(0,0%,45%,.5) 80%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-darktext:not([selected="true"]):hover,
-.tabs-newtab-button:-moz-lwtheme-darktext:hover {
-  background-image: linear-gradient(hsla(0,0%,80%,.5), hsla(0,0%,60%,.5) 80%);
-}
-
 .tabbrowser-tab[pinned][titlechanged]:not([selected="true"]) {
-  background-image: radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  background-image: var(--tab-pinned-background);
 }
 .tabbrowser-tab[pinned][titlechanged]:not([selected="true"]):hover {
-  background-image: linear-gradient(hsla(0,0%,100%,.4), hsla(0,0%,75%,.4) 80%),
-                    radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  background-image: var(--tab-pinned-background-hover);
 }
 
 /* Add-on bar */
@@ -259,188 +425,320 @@ toolbarbutton.bookmark-item[open="true"] {
 /* ==== Windows 10 styling ==== */
 
   @media (-moz-os-version: windows-win10) {
-    /* Draw XUL caption buttons Win10 in lwthemes */
-
-    #titlebar-buttonbox,
-    .titlebar-button {
-      -moz-appearance: none !important;
-    }
-
-    .titlebar-button {
-      border: none;
-      margin: 0 !important;
-      padding: 9px 17px;
-      transition: background-color linear 120ms;
+  /* Draw XUL caption buttons and background on Win10 */
+  @media (-moz-windows-accent-color-applies: 0) {
+    /* Default styling for when no accent color is applied */
+    #main-window:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      background-color: white;
     }
     
-    .titlebar-button:hover:active {
+    :root:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      --window-text-color: black;
+    }
+    
+    #titlebar-min:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize);
+    }
+
+    #titlebar-max:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize);
+    }
+
+    #main-window[sizemode="maximized"] #titlebar-max:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore);
+    }
+    
+    #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#close);
+    }
+
+    .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
+      background-color: hsla(0, 0%, 0%, .17);
+    }
+
+    .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active	{
+      background-color: hsla(0, 0%, 0%, .27);
       transition: none;
     }
-        
-    #main-window[sizemode="maximized"][tabsontop=true] #tabbrowser-tabs {
-      min-height: 28px;
-    }
-
-    #main-window[sizemode=maximized] .titlebar-button {
-      padding-top: 8px;
-      padding-bottom: 8px;
-    }
-
-    .titlebar-button > .toolbarbutton-icon {
-      width: 12px;
-      height: 12px;
-    }
-
-    #main-window[chromemargin^="0,"][sizemode=normal] #navigator-toolbox {
-      margin-top: -4px;
-    }
-
-	#main-window[sizemode="maximized"] #titlebar-close {
-      padding-right: 19px;
-    }
     
-    #titlebar-close:not(:-moz-lwtheme) {
+    #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
       list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-white);
-      opacity: 0;
+      background-color: hsla(0, 86%, 49%, 1);
+    }
+
+    #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active	{
+      background-color: hsla(0, 60%, 49%, 0.6);
+      transition: none;
+    }
+  }
+  
+  @media (-moz-windows-accent-color-applies) {
+    /* Styling for when an accent color is applied to the titlebar */
+    #main-window:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      background-color: -moz-win-accentcolor;
     }
     
-    #titlebar-close:hover {
-      background-color: hsla(0, 86%, 49%, 1) !important;
-      opacity: 1;
-    }
-
-    #titlebar-close:hover:active {
-      background-color: hsla(0, 86%, 49%, 0.6) !important; 
+    :root:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+      --window-text-color: -moz-win-accentcolortext;
     }
     
-    /* light persona */
+    #titlebar-min {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize);
+    }
+
+    #titlebar-max {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize);
+    }
+
+    #main-window[sizemode="maximized"] #titlebar-max {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore);
+    }
+
+    #titlebar-close {
+      list-style-image: url(chrome://browser/skin/caption-buttons.svg#close);
+    }
     
-    #titlebar-min:-moz-lwtheme-darktext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize-darktext);
-    }
-
-    #titlebar-max:-moz-lwtheme-darktext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize-darktext);
-    }
-
-    #main-window[sizemode="maximized"]:-moz-lwtheme-darktext #titlebar-max:-moz-lwtheme-darktext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore-darktext);
-    }
-
-    #titlebar-close:-moz-lwtheme-darktext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-darktext);
-    }
-    #titlebar-close:hover:-moz-lwtheme-darktext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-darktext);
-    }
-        
-    /* dark persona */
-    
-    #titlebar-min:-moz-lwtheme-brighttext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize-themes);
-    }
-
-    #titlebar-max:-moz-lwtheme-brighttext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize-themes);
-    }
-
-    #main-window[sizemode="maximized"]:-moz-lwtheme-brighttext #titlebar-max:-moz-lwtheme-brighttext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore-themes);
-    }
-
-    #titlebar-close:-moz-lwtheme-brighttext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-themes);
-    }
-    #titlebar-close:hover:-moz-lwtheme-brighttext {
-      list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-themes);
-    }
-        
-    /* the 12px image renders a 10px icon, and the 10px upscaled gets rounded to 12.5, which
-     * rounds up to 13px, which makes the icon one pixel too big on 1.25dppx. Fix: */
-    @media (min-resolution: 1.20dppx) and (max-resolution: 1.45dppx) {
-      .titlebar-button > .toolbarbutton-icon {
-        width: 11.5px;
-        height: 11.5px;
-      }
-    }
-
-    /* 175% dpi should result in the same device pixel sizes as 150% dpi. */
-    @media (min-resolution: 1.70dppx) and (max-resolution: 1.95dppx) {
-      .titlebar-button {
-        padding-left: 14.1px;
-        padding-right: 14.1px;
-      }
-
-      .titlebar-button > .toolbarbutton-icon {
-        width: 10.8px;
-        height: 10.8px;
-      }
-    }
-
-    /* 225% dpi should result in the same device pixel sizes as 200% dpi. */
-    @media (min-resolution: 2.20dppx) and (max-resolution: 2.45dppx) {
-      .titlebar-button {
-        padding-left: 15.3333px;
-        padding-right: 15.3333px;
-      }
-
-      .titlebar-button > .toolbarbutton-icon {
-        width: 10.8px;
-        height: 10.8px;
-      }
-    }
-
-    /* 275% dpi should result in the same device pixel sizes as 250% dpi. */
-    @media (min-resolution: 2.70dppx) and (max-resolution: 2.95dppx) {
-      .titlebar-button > .toolbarbutton-icon {
-        width: 10.8px;
-        height: 10.8px;
-      }
-    }
-
     .titlebar-button:hover {
       background-color: hsla(0, 0%, 0%, .17);
     }
 
     .titlebar-button:hover:active {
       background-color: hsla(0, 0%, 0%, .27);
-    }
-
-    .titlebar-button:not(:hover) > .toolbarbutton-icon:-moz-window-inactive {
-      opacity: 0.5;
-    }
-          
-    /* dark persona */
-    .titlebar-button:-moz-lwtheme-brighttext:hover {
-      background-color: hsla(0, 0%, 100%, .27);
-    }
-
-    .titlebar-button:-moz-lwtheme-brighttext:hover:active {
-      background-color: hsla(0, 0%, 100%, .37);
+      transition: none;
     }
     
-    /* dark accent color */
-    #main-window[darkwindowframe="true"] .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
-      background-color: hsla(0, 0%, 100%, .12);
-    }
+    @media (-moz-windows-accent-color-is-dark) {
+      /* dark accent color */
+      #titlebar-min {
+        list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize-white);
+      }
 
-    #main-window[darkwindowframe="true"] .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active	{
-      background-color: hsla(0, 0%, 100%, .22);
-    }
+      #titlebar-max {
+        list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize-white);
+      }
+
+      #main-window[sizemode="maximized"] #titlebar-max {
+        list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore-white);
+      }
+
+      #titlebar-close {
+        list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-white);
+      }
     
-    #main-window[darkwindowframe="true"] #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
-      background-color: hsla(0, 86%, 49%, 1);
-    }
+      .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
+        background-color: hsla(0, 0%, 100%, .17);
+      }
 
-    #main-window[darkwindowframe="true"] #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active	{
-      background-color: hsla(0, 60%, 39%, 0.6);
+      .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active	{
+        background-color: hsla(0, 0%, 100%, .27);
+        transition: none;
+      }
+    
+      #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
+        background-color: hsla(0, 86%, 49%, 1);
+      }
+
+      #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active	{
+        background-color: hsla(0, 60%, 39%, 1);
+        transition: none;
+      }
     }
-      
-    #appmenu-button {
-      margin-top: -1px;
-      margin-bottom: 5px;
-    }   
   }
+  
+  #main-window:-moz-window-inactive:not(:-moz-lwtheme) {
+    background-color: hsl(0, 0%, 90%);
+  }
+
+  #titlebar-buttonbox,
+  .titlebar-button {
+    -moz-appearance: none !important;
+  }
+
+  .titlebar-button {
+    border: none;
+    margin: 0 0 1px 0 !important;
+    padding: 9px 17px;
+    transition: background-color linear 120ms;
+  }
+      
+  #main-window[sizemode="maximized"][tabsontop=true] #tabbrowser-tabs {
+    min-height: 28px;
+  }
+
+  #main-window[sizemode=maximized]:not([tabsontop="true"]) .titlebar-button {
+    padding-top: 7px;
+    padding-bottom: 5px;
+  }
+  
+  #main-window[sizemode="maximized"][tabsontop="true"] .titlebar-button {
+    padding-top: 8px;
+    padding-bottom: 7px;
+    margin-bottom: 2px !important;
+  }
+
+  .titlebar-button > .toolbarbutton-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .titlebar-button:not(:hover) > .toolbarbutton-icon:-moz-window-inactive {
+    opacity: 0.5;
+  }
+
+  #main-window[chromemargin^="0,"][sizemode=normal] #navigator-toolbox {
+    margin-top: -4px;
+  }
+
+  #main-window[sizemode="maximized"] #titlebar-close {
+    padding-right: 19px;
+  }
+  
+  #titlebar-close:hover {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-white);
+    background-color: hsla(0, 86%, 49%, 1);
+    transition: background-color linear 160ms;
+  }
+
+  #titlebar-close:hover:active {
+    background-color: hsla(0, 86%, 49%, 0.6); 
+    transition: none;
+  }
+  
+  /* inactive window */
+
+  #titlebar-min:-moz-window-inactive:not(:-moz-lwtheme) {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize);
+  }
+
+  #titlebar-max:-moz-window-inactive:not(:-moz-lwtheme) {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize);
+  }
+
+  #main-window[sizemode="maximized"] #titlebar-max:-moz-window-inactive:not(:-moz-lwtheme) {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore);
+  }
+
+  #titlebar-close:-moz-window-inactive:not(:-moz-lwtheme):not(:hover) {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#close);
+  }
+  
+  .titlebar-button:-moz-window-inactive:not(:-moz-lwtheme):hover {
+    background-color: hsla(0, 0%, 0%, .17);
+  }
+
+  .titlebar-button:-moz-window-inactive:not(:-moz-lwtheme):hover:active {
+    background-color: hsla(0, 0%, 0%, .27);
+    transition: none;
+  }
+  
+  /* light persona */
+  
+  .titlebar-button:-moz-lwtheme-darktext:hover {
+    background-color: hsla(0, 0%, 0%, .17);
+  }
+
+  .titlebar-button:-moz-lwtheme-darktext:hover:active {
+    background-color: hsla(0, 0%, 0%, .27);
+    transition: none;
+  }
+  
+  #titlebar-min:-moz-lwtheme-darktext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize-darktext);
+  }
+
+  #titlebar-max:-moz-lwtheme-darktext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize-darktext);
+  }
+
+  #main-window[sizemode="maximized"]:-moz-lwtheme-darktext #titlebar-max:-moz-lwtheme-darktext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore-darktext);
+  }
+
+  #titlebar-close:-moz-lwtheme-darktext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-darktext);
+  }
+  #titlebar-close:hover:-moz-lwtheme-darktext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-darktext);
+  }
+      
+  /* dark persona */
+  
+  .titlebar-button:-moz-lwtheme-brighttext:hover {
+    background-color: hsla(0, 0%, 100%, .27);
+  }
+
+  .titlebar-button:-moz-lwtheme-brighttext:hover:active {
+    background-color: hsla(0, 0%, 100%, .37);
+    transition: none;
+  }
+  
+  #titlebar-min:-moz-lwtheme-brighttext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#minimize-themes);
+  }
+
+  #titlebar-max:-moz-lwtheme-brighttext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#maximize-themes);
+  }
+
+  #main-window[sizemode="maximized"]:-moz-lwtheme-brighttext #titlebar-max:-moz-lwtheme-brighttext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#restore-themes);
+  }
+
+  #titlebar-close:-moz-lwtheme-brighttext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-themes);
+  }
+  #titlebar-close:hover:-moz-lwtheme-brighttext {
+    list-style-image: url(chrome://browser/skin/caption-buttons.svg#close-themes);
+  }
+      
+  /* the 12px image renders a 10px icon, and the 10px upscaled gets rounded to 12.5, which
+   * rounds up to 13px, which makes the icon one pixel too big on 1.25dppx. Fix: */
+  @media (min-resolution: 1.20dppx) and (max-resolution: 1.45dppx) {
+    .titlebar-button > .toolbarbutton-icon {
+      width: 11.5px;
+      height: 11.5px;
+    }
+  }
+
+  /* 175% dpi should result in the same device pixel sizes as 150% dpi. */
+  @media (min-resolution: 1.70dppx) and (max-resolution: 1.95dppx) {
+    .titlebar-button {
+      padding-left: 14.1px;
+      padding-right: 14.1px;
+    }
+
+    .titlebar-button > .toolbarbutton-icon {
+      width: 10.8px;
+      height: 10.8px;
+    }
+  }
+
+  /* 225% dpi should result in the same device pixel sizes as 200% dpi. */
+  @media (min-resolution: 2.20dppx) and (max-resolution: 2.45dppx) {
+    .titlebar-button {
+      padding-left: 15.3333px;
+      padding-right: 15.3333px;
+    }
+
+    .titlebar-button > .toolbarbutton-icon {
+      width: 10.8px;
+      height: 10.8px;
+    }
+  }
+
+  /* 275% dpi should result in the same device pixel sizes as 250% dpi. */
+  @media (min-resolution: 2.70dppx) and (max-resolution: 2.95dppx) {
+    .titlebar-button > .toolbarbutton-icon {
+      width: 10.8px;
+      height: 10.8px;
+    }
+  }
+    
+  #appmenu-button {
+    margin-top: -1px;
+    margin-bottom: 5px;
+  }    
+}
 
 /* ==== Windows Vista/7/8 styling ==== */
 
@@ -497,16 +795,66 @@ toolbarbutton.bookmark-item[open="true"] {
     }
   }
   
-  /* Make the menu toolbar and tabs toolbar transparent in Aero+glass IIF tabs are on top and menu toolbar is autohidden */
-  #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"],
-  #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"] ~ #TabsToolbar {
-    background-color: transparent;
-    /* Give text an aura to make it more readable on glass */
-    text-shadow: 0 0 .5em white, 0 0 .5em white, 0 0 .5em white, 0 0 .5em white, 0 1px 0 rgba(255,255,255,.4);
+/* ==== Windows 8/10 (flat color) styling ==== */
+
+  @media (-moz-os-version: windows-win8) {
+    /* Use a light text styling on dark window frames */
+    :root[darkwindowframe="true"]:not(:-moz-lwtheme):not(:-moz-window-inactive) {
+      --window-text-color: white;
+    }
   }
-  #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"] #main-menubar:not(:-moz-lwtheme):not(:-moz-window-inactive) {
-    background-color: rgba(255,255,255,.5);
-    border-radius: 4px;
+
+  @media (-moz-os-version: windows-win8),
+         (-moz-os-version: windows-win10) {
+    /* Fade text stylings on window inactivity */
+    :root:not(:-moz-lwtheme):-moz-window-inactive {
+      --window-text-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+/* ==== ==== */
+    
+  @media (-moz-os-version: windows-vista),
+         (-moz-os-version: windows-win7) {
+    /* Make the menu toolbar and tabs toolbar transparent in Aero+glass IIF tabs are on top and menu toolbar is autohidden */
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"],
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"],
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"] ~ #TabsToolbar {
+      background-color: transparent;
+    }
+    
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"],
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"] ~ #TabsToolbar {
+      /* Give text an aura to make it more readable on glass */
+      text-shadow: 0 0 .5em white, 0 0 .5em white, 0 0 .5em white, 0 0 .5em white, 0 1px 0 rgba(255,255,255,.4);
+    }
+    
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"] #main-menubar:not(:-moz-lwtheme):not(:-moz-window-inactive) {
+      background-color: rgba(255,255,255,.5);
+      border-radius: 4px;
+    }
+  }
+  
+  @media (-moz-os-version: windows-win8),
+         (-moz-os-version: windows-win10) {
+    /* Make the menu toolbar and tabs toolbar transparent in Aero+glass IIF tabs are on top and menu toolbar is autohidden */
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"],
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"],
+    #main-window[sizemode="maximized"] #navigator-toolbox[tabsontop="true"] > #toolbar-menubar[autohide="true"] ~ #TabsToolbar {
+      background-color: transparent;
+      color: var(--window-text-color);
+    }
+    
+    #main-menubar > menu:not(:-moz-lwtheme) {
+      color: inherit; /* allow menubar items to be styled */
+    }
+  }
+  
+  @media (-moz-os-version: windows-win10) {
+    /* Fix tab margins in tabsintitlebar mode */ 
+    #main-window[tabsintitlebar] #TabsToolbar {
+      margin-top: -1px !important;
+    }
   }
 
   #main-window[sizemode=fullscreen]:not(:-moz-lwtheme) {

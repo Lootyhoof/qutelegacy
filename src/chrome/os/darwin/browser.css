@@ -1,6 +1,32 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
 
+:root {
+  --tab-background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2)), linear-gradient(-moz-dialog, -moz-dialog);
+  --tab-background-hover: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(hsla(0,0%,100%,.3) 1px, hsla(0,0%,75%,.2) 80%, hsla(0,0%,60%,.2)), linear-gradient(-moz-dialog, -moz-dialog);
+  --tab-pinned-background: radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  --tab-pinned-background-hover: linear-gradient(hsla(0,0%,100%,.4), hsla(0,0%,75%,.4) 80%), radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  --tab-selected-background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%), linear-gradient(-moz-dialog, -moz-dialog);
+  
+  --tab-bar-background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, rgba(0,0,0,.05) 1px, transparent 50%);
+  --toolbar-highlight-top: rgba(255,255,255,.5);
+  --toolbar-highlight-bottom: transparent;
+}
+
+:root:-moz-lwtheme {
+  --tab-selected-background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%);
+}
+
+:root:-moz-lwtheme-brighttext {
+  --tab-background: linear-gradient(hsla(0,0%,40%,.6), hsla(0,0%,30%,.6) 80%);
+  --tab-background-hover: linear-gradient(hsla(0,0%,60%,.6), hsla(0,0%,45%,.6) 80%);
+}
+
+:root:-moz-lwtheme-darktext {
+  --tab-background: linear-gradient(hsla(0,0%,60%,.5), hsla(0,0%,45%,.5) 80%);
+  --tab-background-hover: linear-gradient(hsla(0,0%,80%,.5), hsla(0,0%,60%,.5) 80%);
+}
+
 /* navigator-toolbox */
 
 #titlebar {
@@ -32,22 +58,10 @@
   background-color: -moz-Dialog;                                           
 }
                                              
-#nav-bar[tabsontop=true]:not(:-moz-lwtheme),
-#nav-bar[tabsontop=true][collapsed=true]:not([customizing]):not(:-moz-lwtheme) + toolbar,
-#nav-bar[tabsontop=true][collapsed=true]:not([customizing]):not(:-moz-lwtheme) + #customToolbars + #PersonalToolbar {
-  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));                           
-}
-
-#nav-bar[tabsontop=true]:-moz-lwtheme,
-#nav-bar[tabsontop=true][collapsed=true]:not([customizing]):-moz-lwtheme + toolbar,
-#nav-bar[tabsontop=true][collapsed=true]:not([customizing]):-moz-lwtheme + #customToolbars + #PersonalToolbar {
-  background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,0));                                                
-}
-
-#nav-bar[tabsontop=true]:-moz-lwtheme-brighttext,
-#nav-bar[tabsontop=true][collapsed=true]:not([customizing]):-moz-lwtheme-brighttext + toolbar,
-#nav-bar[tabsontop=true][collapsed=true]:not([customizing]):-moz-lwtheme-brighttext + #customToolbars + #PersonalToolbar {                                                                       
-  background-image: linear-gradient(rgba(32,32,32,.8), rgba(32,32,32,0));
+#nav-bar[tabsontop=true],
+#nav-bar[tabsontop=true][collapsed=true]:not([customizing]) + toolbar,
+#nav-bar[tabsontop=true][collapsed=true]:not([customizing]) + #customToolbars + #PersonalToolbar {
+  background-image: linear-gradient(var(--toolbar-highlight-top), var(--toolbar-highlight-bottom));                           
 }
 
 #personal-bookmarks {
@@ -125,7 +139,7 @@ toolbarbutton.bookmark-item > menupopup {
 
 #TabsToolbar:not(:-moz-lwtheme),
 #TabsToolbar[tabsontop=false] {
-  background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, rgba(0,0,0,.05) 1px, transparent 50%);
+  background-image: var(--tab-bar-background);
 }
 
 #main-window[sizemode=normal] #TabsToolbar {
@@ -138,8 +152,7 @@ toolbarbutton.bookmark-item > menupopup {
 .tabbrowser-tab,
 .tabs-newtab-button {
   -moz-appearance: none;
-  background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2)),
-              linear-gradient(-moz-dialog, -moz-dialog);
+  background: var(--tab-background);
   background-origin: border-box;
   background-position: 1px 2px;
   background-size: -moz-calc(100% - 2px) -moz-calc(100% - 2px);
@@ -154,60 +167,26 @@ toolbarbutton.bookmark-item > menupopup {
 
 .tabbrowser-tab:hover,
 .tabs-newtab-button:hover {
-  background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(hsla(0,0%,100%,.3) 1px, hsla(0,0%,75%,.2) 80%, hsla(0,0%,60%,.2)),
-                    linear-gradient(-moz-dialog, -moz-dialog);
+  background-image: var(--tab-background-hover);
 }
 
 .tabbrowser-tab[selected="true"] {
-  background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%),
-                    linear-gradient(-moz-dialog, -moz-dialog);
+  background-image: var(--tab-selected-background);
 }
 
 #main-window[tabsontop=false]:not([disablechrome]) .tabbrowser-tab[selected=true]:not(:-moz-lwtheme) {
-  background-image: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px),
-                    linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%),
-                    linear-gradient(-moz-dialog, -moz-dialog);
+  --tab-selected-background: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px), linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%), linear-gradient(-moz-dialog, -moz-dialog);
 }
 
 .tabbrowser-tab:-moz-lwtheme {
   color: inherit;
 }
 
-.tabbrowser-tab[selected="true"]:-moz-lwtheme {
-  background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%);
-}
-
-.tabbrowser-tab[selected="true"]:not(:-moz-lwtheme) > * > * > .tab-text {
-  color: black;
-  text-shadow: none;
-}
-
-.tabbrowser-tab:-moz-lwtheme-brighttext:not([selected="true"]),
-.tabs-newtab-button:-moz-lwtheme-brighttext {
-  background-image: linear-gradient(hsla(0,0%,40%,.6), hsla(0,0%,30%,.6) 80%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-brighttext:not([selected="true"]):hover,
-.tabs-newtab-button:-moz-lwtheme-brighttext:hover {
-  background-image: linear-gradient(hsla(0,0%,60%,.6), hsla(0,0%,45%,.6) 80%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-darktext:not([selected="true"]),
-.tabs-newtab-button:-moz-lwtheme-darktext {
-  background-image: linear-gradient(hsla(0,0%,60%,.5), hsla(0,0%,45%,.5) 80%);
-}
-
-.tabbrowser-tab:-moz-lwtheme-darktext:not([selected="true"]):hover,
-.tabs-newtab-button:-moz-lwtheme-darktext:hover {
-  background-image: linear-gradient(hsla(0,0%,80%,.5), hsla(0,0%,60%,.5) 80%);
-}
-
 .tabbrowser-tab[pinned][titlechanged]:not([selected="true"]) {
-  background-image: radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  background-image: var(--tab-pinned-background);
 }
 .tabbrowser-tab[pinned][titlechanged]:not([selected="true"]):hover {
-  background-image: linear-gradient(hsla(0,0%,100%,.4), hsla(0,0%,75%,.4) 80%),
-                    radial-gradient(circle farthest-corner at 50% 3px, rgba(255,255,255,1) 3%, rgba(186,221,251,.75) 40%, rgba(127,179,255,.5) 80%, rgba(127,179,255,.25));
+  background-image: var(--tab-pinned-background-hover);
 }
 
 /* Add-on bar */
