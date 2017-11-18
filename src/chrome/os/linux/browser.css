@@ -60,7 +60,6 @@
 toolbarbutton.bookmark-item {
   margin: 0;
   padding: 2px 3px;
-  color: inherit !important;
 }
 
 toolbarbutton.bookmark-item:hover:active:not([disabled="true"]),
