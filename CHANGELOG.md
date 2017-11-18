@@ -1,5 +1,14 @@
 # Changelog
 
+### 2.1.0
+- add HiDPI-capable toolbar icons
+- fix statusbar progressmeter
+- sync devtools styling with default
+- preserve add-on bar close button in text mode
+- improve downloads panel appearance
+- Linux: redesign appmenu
+- OS X: fix active tab text styling
+
 ### 2.0.1
 - sync about:support styling with default
 
