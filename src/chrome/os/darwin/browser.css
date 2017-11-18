@@ -189,6 +189,11 @@ toolbarbutton.bookmark-item > menupopup {
   background-image: var(--tab-pinned-background-hover);
 }
 
+.tabbrowser-tab[selected="true"]:not(:-moz-lwtheme) > * > * > .tab-text {
+  color: black;
+  text-shadow: none;
+}
+
 /* Add-on bar */
 
 #addon-bar {
