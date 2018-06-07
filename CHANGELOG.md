@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.2.0
+- add initial Pale Moon 28 support
+- don't use background image on standalone image viewer
+
 ### 2.1.0
 - add HiDPI-capable toolbar icons
 - fix statusbar progressmeter
