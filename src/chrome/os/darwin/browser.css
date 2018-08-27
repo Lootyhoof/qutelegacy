@@ -115,8 +115,8 @@ toolbarbutton.bookmark-item:-moz-lwtheme {
   list-style-image: url("chrome://browser/skin/places/folderDropArrow.png");
   -moz-image-region: rect(0, 7px, 5px, 0);
   margin-top: 1px;
-  -moz-margin-start: 3px;
-  -moz-margin-end: -2px;
+  margin-inline-start: 3px;
+  margin-inline-end: -2px;
 }
 
 .bookmark-item > .toolbarbutton-text {
@@ -125,7 +125,7 @@ toolbarbutton.bookmark-item:-moz-lwtheme {
 }
 
 .bookmark-item > .toolbarbutton-icon {
-  -moz-margin-end: 5px;
+  margin-inline-end: 5px;
 }
 
 toolbarbutton.bookmark-item:hover,
@@ -152,7 +152,7 @@ toolbarbutton.bookmark-item[open="true"] {
 
 toolbarbutton.bookmark-item > menupopup {
   margin-top: 2px;
-  -moz-margin-start: 3px;
+  margin-inline-start: 3px;
 }
 
 .bookmark-item > .toolbarbutton-icon {
@@ -163,7 +163,7 @@ toolbarbutton.bookmark-item > menupopup {
 
 .bookmark-item > .toolbarbutton-icon[label]:not([label=""]),
 .bookmark-item > .toolbarbutton-icon[type="menu"] {
-  -moz-margin-end: 5px;
+  margin-inline-end: 5px;
 }
 
 /* Tabstrip */

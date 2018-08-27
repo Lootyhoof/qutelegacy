@@ -104,13 +104,13 @@
   #appmenuPrimaryPane {
     background-color: rgba(255,255,255,0.5);
     padding: 2px;
-    -moz-border-end: none;
+    border-inline-end: none;
   }
   #appmenuSecondaryPane {
     background-color: #f1f5fb;
     box-shadow: 1px 0 2px rgb(204,214,234) inset;
-    -moz-padding-start: 3px;
-    -moz-padding-end: 2px;
+    padding-inline-start: 3px;
+    padding-inline-end: 2px;
     padding-top: 2px;
     padding-bottom: 2px;
     font-family: "Segoe UI Semibold", "Segoe UI", sans-serif;
@@ -228,7 +228,7 @@
     -moz-appearance: none;
     margin-top: 3px;
     margin-bottom: 3px;
-    -moz-margin-start: 30px;
+    margin-inline-start: 30px;
     padding: 0;
     border-top: 1px solid #d6e5f5;
     border-bottom: none;
@@ -236,17 +236,17 @@
 
   @media (min-resolution: 1.25dppx) {
     .appmenu-menuseparator {
-      -moz-margin-start: 25px;
+      margin-inline-start: 25px;
     }
   }
   @media (min-resolution: 1.5dppx) {
     .appmenu-menuseparator {
-      -moz-margin-start: 24px;
+      margin-inline-start: 24px;
     }
   }
   @media (min-resolution: 2dppx) {
     .appmenu-menuseparator {
-      -moz-margin-start: 22px;
+      margin-inline-start: 22px;
     }
   }
 
@@ -269,8 +269,8 @@ toolbarbutton.bookmark-item:hover:active:not([disabled="true"]),
 toolbarbutton.bookmark-item[open="true"] {
   padding-top: 3px;
   padding-bottom: 1px;
-  -moz-padding-start: 4px;
-  -moz-padding-end: 2px;
+  padding-inline-start: 4px;
+  padding-inline-end: 2px;
 }
 
 .bookmark-item:not(#bookmarks-menu-button) > .toolbarbutton-icon {
@@ -388,7 +388,7 @@ toolbarbutton.bookmark-item[open="true"] {
 
   #appmenu-popup {
     margin-top: -1px;
-    -moz-margin-start: 1px;
+    margin-inline-start: 1px;
   }
 
   .panel-promo-message {
