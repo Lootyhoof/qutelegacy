@@ -320,7 +320,7 @@ toolbarbutton.bookmark-item[open="true"] {
   padding: 2px 0 4px;
   border-width: 4px 3px 0;
   border-style: solid;
-  -moz-border-image: url("chrome://browser/skin/tabbrowser/tab.png") 4 3 0 fill repeat stretch;
+  border-image: url("chrome://browser/skin/tabbrowser/tab.png") 4 3 0 fill repeat stretch;
   border-radius: 0;
 }
 
