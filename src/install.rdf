@@ -9,7 +9,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>{8a13d488-8657-4dab-b98e-98e62085837f}</em:id>
-    <em:version>2.6.0</em:version>
+    <em:version>2.6.1</em:version>
     <em:name>Qute Legacy</em:name>
     <em:description>Customized version of Arvid Axelsson's great theme. Fork of "Qute 3++" by Murphy.</em:description>
     <em:creator>Lootyhoof</em:creator>
@@ -26,7 +26,7 @@
         <!-- Pale Moon -->
         <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
         <em:minVersion>28.6.0</em:minVersion>
-        <em:maxVersion>28.*</em:maxVersion>
+        <em:maxVersion>29.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>
