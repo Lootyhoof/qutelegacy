@@ -1,5 +1,5 @@
 # Qute Legacy
-![Preview](http://i64.tinypic.com/xpui6r.png)
+![Preview](https://i.imgur.com/kOVsdfs.png)
 
 Fork of the theme "Qute 3++" by Murphy for Pale Moon.
 
