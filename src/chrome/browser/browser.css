@@ -144,7 +144,7 @@
 }
 
 #appmenuPrimaryPane {
-  border-inline-end: 1px solid ThreeDShadow;
+  border-inline-end: 1px solid var(--shadow-color);
 }
 
 #appmenuSecondaryPane-spacer {
@@ -950,7 +950,7 @@ toolbar[iconsize="small"] #sync-button[status="active"] {
   margin: 1px 3px;
   padding: 0;
   background-clip: padding-box;
-  border: 1px solid ThreeDShadow;
+  border: 1px solid var(--shadow-color);
   border-radius: 2px;
 }
 
@@ -1525,7 +1525,7 @@ richlistitem[type~="action"][actiontype="switchtab"][selected="true"] > .ac-url-
 .panel-promo-box {
   margin: 10px -10px -10px;
   padding: 8px 10px;
-  border-top: 1px solid ThreeDShadow;
+  border-top: 1px solid var(--shadow-color);
   background-image: linear-gradient(hsla(0,0%,0%,.15), hsla(0,0%,0%,.08) 6px);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -1889,7 +1889,7 @@ richlistitem[type~="action"][actiontype="switchtab"][selected="true"] > .ac-url-
 
 .alltabs-item[tabIsVisible] {
   /* box-shadow instead of background-color to work around native styling */
-  box-shadow: inset -5px 0 ThreeDShadow;
+  box-shadow: inset -5px 0 var(--shadow-color);
 }
 
 /* Tabstrip close button */
@@ -2440,7 +2440,7 @@ window:not([chromehidden~=toolbar]) #navigator-toolbox[iconsize=large][mode=icon
 
 .allTabs-preview-inner > .tabPreview-canvas {
   background-color: rgb(60%,60%,60%);
-  box-shadow: 0 0 1.5px ThreeDShadow;
+  box-shadow: 0 0 1.5px var(--shadow-color);
 }
 
 .allTabs-preview:not(:hover):not([closebuttonhover]) > html|canvas {
@@ -2555,7 +2555,7 @@ toolbar[mode="text"] #addonbar-closebutton > .toolbarbutton-icon {
 }
 
 .click-to-play-plugins-notification-center-box {
-  border: 1px solid ThreeDShadow;
+  border: 1px solid var(--shadow-color);
   margin: 10px;
 }
 
