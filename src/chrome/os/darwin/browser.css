@@ -96,6 +96,11 @@
   background-color: -moz-dialog;
 }
 
+#urlbar:not(:-moz-lwtheme),
+.searchbar-textbox:not(:-moz-lwtheme) {
+  border-color: #A0A0A0 !important;
+}
+
 /* ::::: bookmark buttons ::::: */
 
 toolbarbutton.bookmark-item {
