@@ -1097,7 +1097,8 @@ window:not([chromehidden~=toolbar]) #navigator-toolbox[iconsize=large][mode=icon
 }
 
 #identity-box.verifiedDomain,
-#identity-box.verifiedIdentity {
+#identity-box.verifiedIdentity,
+#identity-box.mixedContent {
   color: white;
   margin-inline-end: 4px;
   text-shadow: 0 1px 0 rgba(0,0,0,.25);
@@ -1112,13 +1113,18 @@ window:not([chromehidden~=toolbar]) #navigator-toolbox[iconsize=large][mode=icon
   background-color: hsl(92,45%,52%) !important;
 }
 
+#identity-box.mixedContent {
+  background-color: rgb(168, 143, 0);
+}
+
 #identity-box:-moz-focusring {
   outline: 1px dotted -moz-DialogText;
   outline-offset: -3px;
 }
 
 #identity-box.verifiedDomain:-moz-focusring,
-#identity-box.verifiedIdentity:-moz-focusring {
+#identity-box.verifiedIdentity:-moz-focusring,
+#identity-box.mixedContent:-moz-focusring {
   outline-color: white;
 }
 
